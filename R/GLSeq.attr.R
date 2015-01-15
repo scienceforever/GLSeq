@@ -84,8 +84,8 @@ qAlgor <- "RSEM"
 #
 # Maximal length of fragment (for paired-end libraries)
 fragMaxLength <- 1000
-
-# Maximum size (MB) of the auxiliary buffer used for computing credibility intervals (CI) - for RSEM (+extra 2Gb per stream)
+#
+# Maximal size (MB) of the auxiliary buffer used for computing credibility intervals (CI) - for RSEM (+extra 2Gb per stream)
 ciMem <- 4096
 #
 # Output genome bam
