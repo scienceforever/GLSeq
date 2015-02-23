@@ -208,6 +208,9 @@ dest.dir <- trailDirCheck(dest.dir)
 #
 # raw directory name with guaranteed trailing slash: 
 raw.dir <- trailDirCheck(raw.dir)
+# readyData.dir checking
+readyData.dir <- trailDirCheck(readyData.dir)
+#
 ###
 # the following directories are ALWAYS relative to the base directory!!!
 #
