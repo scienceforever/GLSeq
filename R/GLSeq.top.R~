@@ -358,7 +358,6 @@ for (ii in 1:nStreams) assign(paste("range",ii,sep=""),rangelist[[ii]])
 # 
 if (qAlgor == "RSEM") source("GLSeq.RSEM.R")
 if (qAlgor == "bwaHTSeq") source("GLSeq.bwaHTSeq.R") 
-if (qAlgor == "CUSHAW") source("GLSeq.CUSHAW.R") 
 # 
 ###############
 # saving the variables for this run

@@ -1,0 +1,22 @@
+###################
+# Expression counting (FeatureCount) 
+###################
+
+if (is.null(libstrand))  strandSpecific <- 0
+if (libstrand == "F") strandSpecific <- 1
+if (libstrand == "R") strandSpecific <- 2
+
+library(Rsubread)
+FeatureCountsReport  <- featureCounts(unsorted.sam, annot.ext=refGFFname, isGTFAnnotationFile=TRUE, GTF.featureType="exon", GTF.attrType=idAttr, useMetaFeatures=TRUE, allowMultiOverlap=FALSE, isPairedEnd=TRUE, nthreads=nCores, strandSpecific=strandSpecific, readExtension5=0, readExtension3=0, read2pos=NULL, minReadOverlap=1, countSplitAlignmentsOnly=FALSE, countMultiMappingReads=FALSE, countPrimaryAlignmentsOnly=TRUE, countChimericFragments=TRUE, ignoreDup=FALSE, chrAliases=NULL, reportReads=FALSE)
+#
+rdaFileName <- paste(text.add, "FeatureCounts.rda", sep=".")
+save(FeatureCountsReport, file=rdaFileName)
+
+unsorted.sam <- "CBYN.CUSHAW.1007510.01.unsorted.sam"
+idAttr <- "gene_id"
+refGFFname <- "MT203.fromGBK.double2.gtf"
+nCores <- 6
+
+
+
+

@@ -28,6 +28,7 @@ fq.left <- fqfiles.table[i,1]
 if (paired.end) fq.right <- fqfiles.table[i,2]
 this.library <- substr(fqfiles.table[i,1], 1,libNchar)
 this.resName <- paste(this.library, text.add, sep=".")
+unsorted.sam <- paste(this.resName, "unsorted.sam", sep=".")
 #
 # names of the expected sai files:
 sainame.left <- paste(fq.left,"sai",sep=".")
@@ -36,9 +37,9 @@ if (paired.end) sainame.right <- paste(fq.right,"sai",sep=".")
 aln.left <- paste(bwaPath, "aln", refFASTAname, fq.left, ">", sainame.left) # System command #1
 if (paired.end) aln.right <- paste(bwaPath, "aln", refFASTAname, fq.right, ">", sainame.right) # System command #2
 # creating SAM file: 
-unsorted.sam <- paste(this.resName, "unsorted.sam", sep=".")
+if (!(BWA2CUSHAW)) {
 if (paired.end) sam.create <- paste(bwaPath, "sampe", refFASTAname, sainame.left, sainame.right, fq.left, fq.right, ">>", unsorted.sam) # System command #3
-if (!(paired.end)) sam.create <- paste(bwaPath, "samse", refFASTAname, sainame.left, fq.left, ">>", unsorted.sam) 
+if (!(paired.end)) sam.create <- paste(bwaPath, "samse", refFASTAname, sainame.left, fq.left, ">>", unsorted.sam) }
 #
 ###################
 # SAM file cleanup
@@ -95,6 +96,14 @@ if (libstrand == "F") countOpt <-  "--stranded=yes"
 countOpt <- paste(countOpt, " --idattr=", idAttr, sep="")
 count.comm <- paste("python -m HTSeq.scripts.count", countOpt, countable.sam, refGFFname, " > ", countfile) # System command #9
 #
+
+###################
+# Expression counting (FeatureCount) 
+###################
+
+
+
+
 ###################
 # Housekeeping 
 ###################
