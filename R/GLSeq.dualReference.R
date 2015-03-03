@@ -12,11 +12,11 @@ exon.boo <- single.gtf$V3 == "exon"
 exon.ind <- (1:length(exon.boo))[exon.boo]
 double.gtf <- single.gtf
 # adding reverse strands as transcripts: 
-for(i in 1:length(exon.ind)) {
+for(i in 1:(length(exon.ind)-1)) {
 current.lineNr <- exon.ind[i]
 myLine <- as.character(double.gtf[current.lineNr,])
+cat('myLine is ', myLine, '\n')
 myLineNew <- myLine
-if(is.na(myLine[7])) i
 if(myLine[7] == "-") myLineNew[7] <- "+"
 if(myLine[7] == "+") myLineNew[7] <- "-"
 new.attr <- as.character(myLineNew[9])
@@ -37,6 +37,7 @@ nextLine <- as.character(double.gtf[current.lineNr+1,])
 next.attr <- as.character(nextLine[9])
 next.pairs <- strsplit(next.attr, split=";")[[1]]
 next.geneName <- strsplit(next.pairs[1], split=" ")[[1]][2]
+cat('processing ', next.geneName, '\n')
 # if there is no duplicate record (exception rather than rule): 
 if (current.geneName != next.geneName) {
 topBrick <- head(double.gtf, current.lineNr)
@@ -49,7 +50,20 @@ bottomBrick <- tail(double.gtf, -(current.lineNr+1))
 double.gtf <- rbind(topBrick, myLineNew, myLineNew.second, bottomBrick) }
 # we have just inserted 2 rows; updating indexes for the next cycle:
 exon.ind <- exon.ind+2 
-} 
+}
+#
+# special treatment of the very last exon of the gtf file: 
+lastExon <- max(exon.ind)
+myLine <- as.character(double.gtf[lastExon,])
+myLineNew <- myLine
+if(myLine[7] == "-") myLineNew[7] <- "+"
+if(myLine[7] == "+") myLineNew[7] <- "-"
+new.attr <- as.character(myLineNew[9])
+attr.pairs <- strsplit(new.attr, split=";")[[1]]
+attr.pairs.new <- paste(attr.pairs,"ANTISENSE", sep=".")
+attr.line.new <- paste(attr.pairs.new, collapse=";")
+myLineNew[9] <- attr.line.new
+double.gtf <- rbind(double.gtf, myLineNew) 
 #
 ######
 # putting single quotes around textual attributes:
