@@ -193,7 +193,7 @@ Sometimes you may want to sacrifice the convenience of the one-click running mod
 2. You want to re-run a different alignment / counting method with your pre-processed data (use nodataprep + exprcalc + collect);    
 3. You want to explicitly collect the results after expression calculation stage when a one-click run is crashed for some unforeseen reason (use nodataprep + noexprcalc + collect).    
 
-#### Structire of the results 
+#### Structure of the results 
 
 Depending on the processing route chosen, the contents of the following directories may differ by file naming patterns and content but the files they contain will always be (generally) of the same type.   
 
