@@ -2,7 +2,7 @@
 
 ![GLSeq scheme](GLSeq.gif)
 
-**The overview of GLSeq**. _Supplementary figure, Moskvin et. al. (2015) Preprint doi: [10.1101/010488](http://dx.doi.org/10.1101/010488) 
+**The overview of GLSeq**. _Supplementary figure, Moskvin et. al. (2015) [Article Online](http://www.tandfonline.com/doi/full/10.1080/21628130.2015.1010923) 
 
 
 
@@ -36,7 +36,7 @@ The pipeline is written by biologist for biologists, using R language. Unlike us
 ## Citing GLSeq
 If you use the GLSeq package, please cite:
 
-- Moskvin O.V., McIlwain S., Ong I.M. (2015) Making sense of RNA-Seq data: from low-level processing to functional analysis. *Systems Biomedicine (Special CAMDA-2014 Issue)* Preprint doi: [10.1101/010488](http://dx.doi.org/10.1101/010488)
+- Moskvin O.V., McIlwain S., Ong I.M. (2015) Making sense of RNA-Seq data: from low-level processing to functional analysis. *Systems Biomedicine (Special CAMDA-2014 Issue)* [Online version is here](http://www.tandfonline.com/doi/full/10.1080/21628130.2015.1010923). Preprint (October 17, 2014) doi: [10.1101/010488](http://dx.doi.org/10.1101/010488)
 
 If you use Bowtie-RSEM as part of your customized pipeline, please also cite:
 
