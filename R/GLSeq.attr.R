@@ -105,22 +105,11 @@ strandExtract <- TRUE
 # a particular subfolder names after the run ID will be created by GLSeq below this folder
 dest.dir.base <-  "/your-base-path-to-expected-results"
 #
-# the default run attempt
-runAttempt <- formatC(1, width=2, flag="0")
-#
-# the actual unique run ID - 
-# text.add <- paste(expID, runAttempt, sep=".")
-# now is being generated inside GLSeq.top.R
-#
 # Number of unique characters in the beginning of the each file (library ID length):
 libNchar <- 36
 #
 # Subset of the libraries to process (optional; normally the list wil be generated from the actual directory content)
 libList <- NULL
-#
-# date of the run
-runDate <-  paste(strsplit(date()," ")[[1]], collapse="_")
-runDate <- gsub(":", "_", runDate)
 #
 # path to Trimmomatic: 
 trimPath <- '/opt/bifxapps/Trimmomatic-0.30/trimmomatic-0.30.jar'

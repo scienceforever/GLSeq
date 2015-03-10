@@ -47,6 +47,17 @@ attrPath <- as.character(args[7])
 #
 source("GLSeq.Util.R")
 #
+# the default run attempt
+runAttempt <- formatC(1, width=2, flag="0")
+#
+# the actual unique run ID - 
+# text.add <- paste(expID, runAttempt, sep=".")
+# now is being generated here, inside GLSeq.top.R
+#
+# date of the run
+runDate <-  paste(strsplit(date()," ")[[1]], collapse="_")
+runDate <- gsub(":", "_", runDate)
+#
 ###################
 # Getting input values:
 # defaults
