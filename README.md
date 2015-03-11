@@ -137,6 +137,8 @@ The base directory of the results (a particular run will create its own subfolde
 
 Please add the full paths to all the utilities listed in the "Environment" section of the ```GLSeq.attr.R``` into your custom attribute file (below).  
 
+Names of the input FASTQ files need to have the same length. If this is not the case, please rename the files to satisfy this requirement using ```GLSeq.rename.fastq.files.R``` script by [ybukhman](https://github.com/ybukhman)
+
 #### Preparing the attribute file   
 
 You will need to change the values in the ```GLSeq.attr.R``` file before the run. Locations of all the relevant directories, processing methods and their parameters are located there. The file is extensively commented and self-descriptive. 
