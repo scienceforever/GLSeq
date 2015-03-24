@@ -37,9 +37,8 @@ if (paired.end) sainame.right <- paste(fq.right,"sai",sep=".")
 aln.left <- paste(bwaPath, "aln", refFASTAname, fq.left, ">", sainame.left) # System command #1
 if (paired.end) aln.right <- paste(bwaPath, "aln", refFASTAname, fq.right, ">", sainame.right) # System command #2
 # creating SAM file: 
-if (!(BWA2CUSHAW)) {
 if (paired.end) sam.create <- paste(bwaPath, "sampe", refFASTAname, sainame.left, sainame.right, fq.left, fq.right, ">>", unsorted.sam) # System command #3
-if (!(paired.end)) sam.create <- paste(bwaPath, "samse", refFASTAname, sainame.left, fq.left, ">>", unsorted.sam) }
+if (!(paired.end)) sam.create <- paste(bwaPath, "samse", refFASTAname, sainame.left, fq.left, ">>", unsorted.sam)
 #
 ###################
 # SAM file cleanup
