@@ -100,7 +100,7 @@ TPM_pme <- NULL
 TPM_lower <- NULL
 TPM_upper <- NULL
 for (i in 1:length(result.fnames)) {
-i.data <- read.table(result.fnames[i], header=TRUE, sep="\t", row.names=1, as.is=TRUE)
+i.data <- read.table(result.fnames[i], header=TRUE, sep="\t", row.names=1, as.is=TRUE, quote = "", comment.char = "")
 counts <- cbind(counts, i.data[,"expected_count"])
 # counts_pme <- cbind(counts_pme, i.data[,"pme_expected_count"]) # field name changed in RSEM v.1.2.15 (Jun 16, 2014)
 counts_pme <- cbind(counts_pme, i.data[,"posterior_mean_count"])
