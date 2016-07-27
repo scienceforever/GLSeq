@@ -115,8 +115,8 @@ system(convertComm)
 #
 ##################
 ##################
-# Reortingt he vectors of length 1 in the environment and their values
-# (practical purpose: fast extracting patrameter information for the old runs in GLSeq from the rda files)
+# Reporting the vectors of length 1 in the environment and their values
+# (practical purpose: fast extracting of parameter information for the old runs in GLSeq from the rda files)
 # maxNchar is the maximum number of characters we want to see in the value of an individual object 
 # (objects with longer character values will be ignored, to avoid flooding the results with system command stacks etc)
 show1Vec <- function(maxNchar=40) {
@@ -140,12 +140,6 @@ rownames(out) <- out[,1]
 out <- out[,-1,drop=FALSE]
 out }
 #@@@@@@@@@@@@@
-#
-
-
-
-
-
 
 
 

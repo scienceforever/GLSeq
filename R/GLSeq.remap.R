@@ -23,7 +23,7 @@ nUnique <- nchar(rownames(theMap)[1])
 #
 for (i in 1:length(avail.files)) {
 currentFname <- avail.files[i]
-current.obj <- read.csv(currentFname, row.names=1)
+current.obj <- read.csv(currentFname, row.names=1,  check.names = FALSE)
 used.libs <- substr(colnames(current.obj), 1, nUnique)
 if (sum(used.libs %in% rownames(theMap)) != length(used.libs)) stop('Not all the actually used libraries are found in the supplied map file!')
 new.colnames <- theMap[used.libs,1]
