@@ -1,6 +1,6 @@
 #######################################################
 # Remapping counts data (with library IDs) to experimental condition IDs 
-# July 16, 2013 
+# July 16, 2013; last updated July 27, 2016
 #######################################################
 #
 args <- commandArgs(trailingOnly = TRUE)
@@ -12,11 +12,13 @@ countDir <- as.character(args[1])
 # remapping CSV file (library names to condition IDs)
 mapCSV <- as.character(args[2])
 # 
+# choice of column reordering: 
+reorderMe <- as.logical(as.numeric(as.character(args[3])))
 # 
 setwd(countDir)
 try(system("mkdir remapped")) 
 avail.files <- dir()[grep("csv", dir())]
-theMap <- read.table(mapCSV,sep="\t",header=FALSE,row.names=1,as.is=TRUE)
+theMap <- read.table(mapCSV,sep="\t",header=FALSE,check.names=FALSE, colClasses=c("character", "character"), row.names=1)
 #
 # determining the number of unique chracters in library IDs:
 nUnique <- nchar(rownames(theMap)[1])
@@ -30,16 +32,17 @@ new.colnames <- theMap[used.libs,1]
 # cbind(colnames(current.obj), new.colnames) # sanity check => passed 
 colnames(current.obj) <- new.colnames
 #
-# reordering the columns for downstream convenience: 
+# reordering the columns for downstream convenience, if selected: 
+if (reorderMe) {
 cols.ordered <-  colnames(current.obj)[order(colnames(current.obj))]
-current.obj <- current.obj[,cols.ordered]
+current.obj <- current.obj[,cols.ordered] }
 baseFname <- substr(currentFname, 1, nchar(currentFname)-4)
 newFname <- paste("remapped/m", baseFname, "csv", sep=".")
 write.csv(current.obj, file=newFname)
 }
 #########################################################
 # Example usage: 
-# Rscript GLSeq.remap.R  /mnt/bigdata/processed_data/a3_rna-seq/Tsato/GLBRCY73.EB4.01/GLBRCY73.EB4.01.counts/  /mnt/bigdata/processed_data/a3_rna-seq/Tsato/yeast_remap.csv 
+# Rscript GLSeq.remap.R  /mnt/bigdata/processed_data/a3_rna-seq/Tsato/GLBRCY73.EB4.01/GLBRCY73.EB4.01.counts/  /mnt/bigdata/processed_data/a3_rna-seq/Tsato/yeast_remap.csv 1
 
 
 
