@@ -1,4 +1,4 @@
-# GLSeq: Pipeline for low-level RNA-Seq data processing 
+# GLSeq: Pipeline for low-level RNA-Seq data processing and database management
 
 ![GLSeq scheme](GLSeq.gif)
 
